@@ -1,4 +1,5 @@
-import { CREATE_POST, FETCH_POSTS, HIDE_LOADER, SHOW_LOADER } from "./actionTypes";
+import { CREATE_POST, FETCH_POSTS } from "./actionTypes";
+import { hideLoader, showAlert, showLoader } from "./appReducer";
 
 const initialState = {
     posts: [],
@@ -24,10 +25,18 @@ export const createPost = (post) => {
 
 export const fetchPosts = () => {
     return async dispatch => {
-        dispatch({type: SHOW_LOADER})
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-        const json = await response.json()
-        await setTimeout (() => {dispatch({type: HIDE_LOADER})}, 2000)
-        dispatch({type: FETCH_POSTS, payload: json})
+        try {
+            dispatch(showLoader())
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+            const json = await response.json()
+            await setTimeout (() => {
+                dispatch(hideLoader())
+            }, 2000)
+            dispatch({type: FETCH_POSTS, payload: json})
+        }
+        catch (error) {
+            dispatch(showAlert("Ошибка загрузки постов!"))
+            dispatch(hideLoader())
+        }
     }
 }
