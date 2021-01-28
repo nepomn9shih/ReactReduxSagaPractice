@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createPost } from "../redux/postReducer";
+import { 
+  // createPost, 
+  postSlice 
+} from "../redux/postReducer";
 import { showAlert } from "../redux/appReducer";
 import Alert from "./Alert";
 
@@ -69,7 +72,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  createPost,
+  createPost: postSlice.actions.createPost,
   showAlert
 };
 

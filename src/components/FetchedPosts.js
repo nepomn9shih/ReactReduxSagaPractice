@@ -5,8 +5,11 @@ import Post from "./Post";
 
 const FetchedPosts = () => {
     const dispatch = useDispatch()
-    const asyncPosts = useSelector((state) => state.posts.fetchedPosts)
+    const asyncPosts = useSelector((state) => {
+        return state.posts.fetchedPosts})
     const isLoading =  useSelector((state) => state.app.isLoading)
+
+    console.log(asyncPosts)
 
     if (!asyncPosts.length) {
         return <button 

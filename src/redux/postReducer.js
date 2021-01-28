@@ -1,32 +1,51 @@
-import { CREATE_POST, FETCH_POSTS, REQUEST_POSTS } from "./actionTypes";
+import { createAction, createSlice } from "@reduxjs/toolkit";
+import { REQUEST_POSTS } from "./actionTypes";
 // import { hideLoader, showAlert, showLoader } from "./appReducer";
 
-const initialState = {
-    posts: [],
-    fetchedPosts: []
-}
-
-export const postReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case CREATE_POST: 
-            return {...state, posts: [...state.posts, action.payload]}
-        case FETCH_POSTS: 
-            return {...state, fetchedPosts: action.payload}
-        default: return state
+export const postSlice = createSlice({
+    name: 'posts',
+    initialState: {
+        posts: [],
+        fetchedPosts: []
+    },
+    reducers: {
+        createPost: (state, action) => {
+            state.posts.push(action.payload)},
+        fetchPost: (state, action) => {
+            state.fetchedPosts.splice(state.fetchedPosts.length - 1, 0, ...action.payload)
+        }
     }
-}
+})
 
-export const createPost = (post) => {
-    return {
-        type: CREATE_POST,
-        payload: post
-    }
-}
 
-export const fetchPosts = () => {
-    return {
-        type: REQUEST_POSTS
-    }
+export const fetchPosts = createAction(REQUEST_POSTS)
+        
+// const initialState = {
+//     posts: [],
+//     fetchedPosts: []
+// }
+
+// export const postReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case CREATE_POST: 
+//             return {...state, posts: [...state.posts, action.payload]}
+//         case FETCH_POSTS: 
+//             return {...state, fetchedPosts: action.payload}
+//         default: return state
+//     }
+// }
+
+// export const createPost = (post) => {
+//     return {
+//         type: CREATE_POST,
+//         payload: post
+//     }
+// }
+
+// export const fetchPosts = () => {
+//     return {
+//         type: REQUEST_POSTS
+//     }
 
     // return async dispatch => {
     //     try {
@@ -43,4 +62,4 @@ export const fetchPosts = () => {
     //         dispatch(hideLoader())
     //     }
     // }
-}
+// }

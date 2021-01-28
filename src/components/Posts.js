@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Post from "./Post";
 
 const Posts = ({syncPosts}) => {
+    
     if (!syncPosts.length) {
         return <p className="text-center">Постов пока нет</p>
     }
@@ -12,6 +13,7 @@ const Posts = ({syncPosts}) => {
 }
 
 const mapStateToProps = (state) => {
+    
     return {
         syncPosts: state.posts.posts
     }

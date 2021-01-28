@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { FETCH_POSTS, REQUEST_POSTS } from './actionTypes'
+import { REQUEST_POSTS } from './actionTypes'
 import { hideLoader, showAlert, showLoader } from './appReducer'
+import { postSlice } from './postReducer'
 
 //нужна функция-генератор
 export function* sagaWatcher() {
@@ -11,7 +12,7 @@ function* sagaWorker() {
     try {
         yield put(showLoader())
         const payload = yield call(fetchPosts)
-        yield put({type: FETCH_POSTS, payload})
+        yield put(postSlice.actions.fetchPost(payload))
         yield put(hideLoader())
     }
     catch (error) {
