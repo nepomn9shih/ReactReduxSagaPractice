@@ -1,5 +1,5 @@
 import { CREATE_POST, FETCH_POSTS, REQUEST_POSTS } from "./actionTypes";
-import { hideLoader, showAlert, showLoader } from "./appReducer";
+// import { hideLoader, showAlert, showLoader } from "./appReducer";
 
 const initialState = {
     posts: [],

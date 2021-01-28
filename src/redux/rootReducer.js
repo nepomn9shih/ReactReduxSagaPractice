@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-import { appReducer } from "./appReducer";
-import { postReducer } from "./postReducer";
+// import { combineReducers } from "redux";
+// import { appReducer } from "./appReducer";
+// import { postReducer } from "./postReducer";
 
-export const rootReducer = combineReducers({
-    posts: postReducer,
-    app: appReducer
-})
+// export const rootReducer = combineReducers({
+//     posts: postReducer,
+//     app: appReducer
+// })
