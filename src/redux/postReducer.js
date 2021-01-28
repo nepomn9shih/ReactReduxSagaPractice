@@ -12,7 +12,7 @@ export const postSlice = createSlice({
         createPost: (state, action) => {
             state.posts.push(action.payload)},
         fetchPost: (state, action) => {
-            state.fetchedPosts.splice(state.fetchedPosts.length - 1, 0, ...action.payload)
+            state.fetchedPosts.splice(state.fetchedPosts.length, 0, ...action.payload)
         }
     }
 })

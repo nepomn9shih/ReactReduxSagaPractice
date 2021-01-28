@@ -9,7 +9,9 @@ import { spamWordsMiddleware } from './redux/middleware';
 import createSagaMiddleware from 'redux-saga'
 import { sagaWatcher } from './redux/sagas';
 import { configureStore } from '@reduxjs/toolkit';
-import { appReducer } from './redux/appReducer';
+import { 
+  // appReducer, 
+  appSlice } from './redux/appReducer';
 import { 
   // postReducer, 
   postSlice 
@@ -28,7 +30,7 @@ const saga = createSagaMiddleware()
 const store = configureStore({
   reducer: {
     posts: postSlice.reducer,
-    app: appReducer
+    app: appSlice.reducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk, spamWordsMiddleware, saga),
   devTools: window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

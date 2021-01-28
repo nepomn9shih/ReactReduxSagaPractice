@@ -7,6 +7,8 @@ import {
 import { showAlert } from "../redux/appReducer";
 import Alert from "./Alert";
 
+
+
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
@@ -41,6 +43,7 @@ class PostForm extends React.Component {
   };
 
   render() {
+    
     return (
       <form onSubmit={this.submitHandler}>
         {this.props.alert && <Alert text={this.props.alert}/>}
